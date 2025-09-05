@@ -1,0 +1,14 @@
+# Build artifacts
+build/
+dist/
+*.o
+*.obj
+*.so
+*.dll
+*.exe
+
+# Python runtime directories
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
