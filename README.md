@@ -6,12 +6,22 @@ C++17 bridge embedding CPython to call the MetaTrader5 Python API from native ap
 
 1. Clone the repository.
 2. Build the bridge using MSVC or MinGW.
-3. Prepare the runtime environment.
-4. Run an example to confirm the setup.
+   - For a one-step MSVC build run `scripts\build_msvc.bat`.
+   - Alternatively follow the manual CMake commands below.
+3. Prepare the runtime environment (see [Runtime setup](#runtime-setup)).
+4. Run `build\bin\usage_example.exe` to confirm the setup.
 
 ## Build
 
 ### MSVC
+
+Run the helper script to configure and build a Release binary:
+
+```bat
+scripts\build_msvc.bat
+```
+
+To invoke CMake manually instead:
 
 ```powershell
 # From a Developer PowerShell
@@ -29,8 +39,19 @@ cmake --build build
 ## Runtime setup
 
 1. Install MetaTrader 5 and log into an account.
-2. Ensure the `python` runtime folder from this repository accompanies your application or set `PYTHONHOME` to that path.
-3. Create `bridge.ini` with `terminal_path` pointing at the MT5 terminal directory.
+2. Prepare an embeddable Python runtime. For example:
+
+   ```bash
+   python scripts/prepare_py_runtime.py --python-url https://www.python.org/ftp/python/3.11.5/python-3.11.5-embed-amd64.zip --output python
+   ```
+
+   Ensure the resulting `python` folder accompanies your application or set `PYTHONHOME` to that path.
+3. Create a `bridge.ini` with the MT5 terminal path:
+
+   ```ini
+   terminal_path=C:\Path\To\MetaTrader5
+   ```
+4. Run `build\bin\usage_example.exe` from the build directory to verify the setup.
 
 ## Example usage
 
