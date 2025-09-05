@@ -29,5 +29,9 @@ if(BUILD_EXAMPLES)
     add_executable(usage_example examples/usage_example.cpp)
     target_link_libraries(usage_example PRIVATE ${JANSSON_LIBRARIES})
     set_target_properties(usage_example PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+
+    add_executable(smoke_no_mt5 examples/smoke_no_mt5.cpp)
+    target_link_libraries(smoke_no_mt5 PRIVATE ${JANSSON_LIBRARIES})
+    set_target_properties(smoke_no_mt5 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 endif()
 
